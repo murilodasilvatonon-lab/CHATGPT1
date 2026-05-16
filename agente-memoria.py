@@ -16,7 +16,7 @@ agente = Agent(
     db=bancoDados,
     session_id="ae15e63d-5624-42ba-ba9f-fc2959d8029b",
     num_history_runs=7,
-    tools=[DuckDuckGoTools(), TavilyTools],
+    tools=[DuckDuckGoTools(), TavilyTools()],
     markdown=True
 )
 
