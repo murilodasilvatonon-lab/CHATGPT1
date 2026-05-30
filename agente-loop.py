@@ -2,8 +2,10 @@ from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from dotenv import load_dotenv
 
+#Carregar a chave de API
 load_dotenv()
 
+#Crio o modelo de IA
 agente = Agent(
     model=OpenAIChat(id="gpt-4o-mini"),
     markdown=True
@@ -11,10 +13,8 @@ agente = Agent(
 
 while True:
     pergunta = input("Digite a sua pergunta: ")
-
-    if pergunta.lower() in ['sair', 'exit', 'quit', 'cancelar', 'finalizar']:
-        print("Encerrando agente...\nFique à vontade quando tiver mais dúvidas! 🤖")
+    if pergunta.lower() in ['exit', 'sair', 'quit', 'cancelar', 'finalizar']:
+        print("Encerando agente...\nAté mais tarde 🤖")
         break
-
-    else:
+    else: 
         agente.print_response(pergunta)

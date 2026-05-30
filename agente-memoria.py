@@ -5,25 +5,27 @@ from agno.tools.tavily import TavilyTools
 from agno.db.sqlite import SqliteDb
 from dotenv import load_dotenv
 
+#Carregar a chave de API
 load_dotenv()
 
 bancoDados = SqliteDb(db_file="temp/registros.db")
 
+#Crio o modelo de IA
 agente = Agent(
     model=OpenAIChat(id="gpt-4o-mini"),
-    description="Você é um especialista em pesquisas academicas, e possui a melhor didatica do mundo para ensino e contextualizacao pratica",
+    description="Você é um especialista em pesquisas acadêmicas, e possui a melhor didática do mundo para ensino e contextualização prática",
     add_history_to_context=True,
     db=bancoDados,
-    session_id="ae15e63d-5624-42ba-ba9f-fc2959d8029b",
-    num_history_runs=7,
-    tools=[DuckDuckGoTools(), TavilyTools()],
+    session_id="2d74ac75-2b92-465c-a5ae-d56ecd5bb793",
+    num_history_runs=3,
+    tools=[DuckDuckGoTools(),TavilyTools],
     markdown=True
 )
 
 while True:
     pergunta = input("Digite a sua pergunta: ")
     if pergunta.lower() in ['exit', 'sair', 'quit', 'cancelar', 'finalizar']:
-        print("Encerrando agente... \nAté mais tarde. 🤖")
+        print("Encerando agente...\nAté mais tarde 🤖")
         break
-    else:
+    else: 
         agente.print_response(pergunta)
